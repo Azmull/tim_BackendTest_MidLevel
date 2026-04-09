@@ -1,6 +1,0 @@
-@tim_BackendTest_MidLevel_HostAddress = http://localhost:5163
-
-GET {{tim_BackendTest_MidLevel_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
