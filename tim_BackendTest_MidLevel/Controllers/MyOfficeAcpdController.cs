@@ -78,9 +78,7 @@ namespace tim_BackendTest_MidLevel.Controllers
       _context.MyOfficeAcpd.Add(entity);
       await _context.SaveChangesAsync();
 
-      var response = MapToResponseDto(entity);
-
-      return CreatedAtAction(nameof(GetById), new { id = entity.AcpdSid }, response);
+      return CreatedAtAction(nameof(GetById), new { id = entity.AcpdSid }, MapToResponseDto(entity));
     }
 
     [HttpPut("{id}")]
@@ -164,7 +162,6 @@ namespace tim_BackendTest_MidLevel.Controllers
       while (true)
       {
         var sid = $"A{DateTime.Now:yyyyMMddHHmmss}{Random.Shared.Next(10000, 99999)}";
-
         var exists = await _context.MyOfficeAcpd.AnyAsync(x => x.AcpdSid == sid);
 
         if (!exists)
